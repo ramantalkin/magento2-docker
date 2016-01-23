@@ -32,13 +32,13 @@ RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 # <---- End
 
-RUN mkdir /var/www/html/app && cd /var/www/html/app && wget https://github.com/magento/magento2/archive/develop.zip
-RUN cd /var/www/html/app && unzip develop.zip
-RUN mv /var/www/html/magento2-develop /var/www/html/magento2
+RUN mkdir /var/www/html/app && mkdir /var/www/html/app/magento2.docker.loc && cd /var/www/html/app/magento2.docker.loc && wget https://github.com/magento/magento2/archive/develop.zip
+RUN cd /var/www/html/app/magento2.docker.loc && unzip develop.zip && rm develop.zip
+#RUN mv /var/www/html/magento2-develop /var/www/html/magento2
 
 # ----> Configuring system
 #ADD magento2 /var/www/app/magento2.docker.loc/magento2
-RUN chmod 777 -R /var/www/app/magento2
+RUN chmod 0777 -R /var/www/app/magento2.docker.loc
 
 # nginx
 ADD etc/nginx.conf/fastcgi_params.conf /etc/nginx/conf/fastcgi_params.conf
