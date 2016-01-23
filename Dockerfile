@@ -38,7 +38,7 @@ RUN cd /var/www/html/app/magento2.docker.loc && unzip develop.zip && rm develop.
 
 # ----> Configuring system
 #ADD magento2 /var/www/app/magento2.docker.loc/magento2
-RUN chmod 0777 -R /var/www/app/magento2.docker.loc
+RUN chmod 0777 -R /var/www/app/
 
 # nginx
 ADD etc/nginx.conf/fastcgi_params.conf /etc/nginx/conf/fastcgi_params.conf
